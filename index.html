@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David Oliveira Cruz — Portefólio</title>
+<style>
+:root {
+  --site-primary: #2563EB;
+  --site-secondary: #6D28D9;
+  --site-background: #0B1020;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #FFFFFF;
+  --site-on-background: #F3F6FF;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: light-dark(#F4F7FF, var(--site-background)); color: light-dark(#10182D, var(--site-on-background)); }
+.site-root { min-height: 100vh; width: 100%; border-radius: 0; overflow: hidden; background-color: var(--site-background); color: var(--site-on-background); position: relative; isolation: isolate; }
+.site-root::before, .site-root::after { content: ""; position: absolute; z-index: -1; pointer-events: none; opacity: var(--site-decoration-opacity); filter: blur(2px); }
+.site-root::before { width: 480px; height: 480px; right: -180px; top: 80px; background: radial-gradient(circle, color-mix(in srgb, var(--site-secondary) 34%, transparent), transparent 68%); }
+.site-root::after { width: 420px; height: 420px; left: -220px; top: 680px; background: radial-gradient(circle, color-mix(in srgb, var(--site-primary) 25%, transparent), transparent 68%); }
+.container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+header { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(148,163,184,.18); background: rgba(11,16,32,.84); backdrop-filter: blur(18px); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
+.brand { display: flex; align-items: center; gap: 11px; color: #F8FAFC; font-weight: 800; letter-spacing: -.04em; text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: calc(12px * var(--site-radius-scale)); background: linear-gradient(135deg, var(--site-primary), var(--site-secondary)); color: white; font-size: 13px; box-shadow: 0 8px 24px rgba(37,99,235,.28); }
+.nav-links { display: flex; align-items: center; gap: 25px; }
+.nav-links a { color: #C5CEE2; font-size: 13px; text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: #FFFFFF; }
+.menu-toggle { display: none; background: transparent; color: white; border: 1px solid #334155; border-radius: 10px; padding: 9px 12px; font: inherit; }
+.hero { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 60px; padding: calc(96px * var(--site-spacing-scale)) 0 calc(110px * var(--site-spacing-scale)); }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid rgba(96,165,250,.3); border-radius: 999px; color: #BFDBFE; background: rgba(37,99,235,.1); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #60A5FA; box-shadow: 0 0 0 4px rgba(96,165,250,.12); }
+h1, h2, h3, p { margin-top: 0; }
+h1 { margin: 24px 0 18px; max-width: 700px; font-family: var(--site-font-heading); font-size: clamp(42px, 6vw, calc(76px * var(--site-heading-scale))); line-height: .99; letter-spacing: -.065em; }
+.gradient-text { background: linear-gradient(100deg, #93C5FD 5%, #A78BFA 62%, #F0ABFC); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-copy { max-width: 620px; color: #AAB6CD; font-size: 17px; line-height: 1.8; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: calc(13px * var(--site-radius-scale)); padding: 13px 18px; text-decoration: none; font-weight: 750; font-size: 14px; transition: transform .2s, box-shadow .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: linear-gradient(110deg, var(--site-primary), var(--site-secondary)); color: white; box-shadow: 0 12px 30px rgba(37,99,235,.23); }
+.btn-secondary { border: 1px solid #34415D; color: #E2E8F0; background: rgba(15,23,42,.6); }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 35px; color: #8795B0; font-size: 12px; }
+.hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+.hero-art { min-height: 390px; display: grid; place-items: center; position: relative; }
+.orbit { width: min(340px, 80vw); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(147,197,253,.18); display: grid; place-items: center; position: relative; background: radial-gradient(circle at 50% 40%, rgba(37,99,235,.15), rgba(109,40,217,.05) 48%, transparent 70%); }
+.orbit::before, .orbit::after { content: ""; position: absolute; border: 1px solid rgba(167,139,250,.22); border-radius: 50%; inset: 25px; transform: rotate(-28deg) scaleX(.72); }
+.orbit::after { inset: 49px; transform: rotate(38deg) scaleX(.72); border-color: rgba(96,165,250,.22); }
+.device { position: relative; width: 208px; padding: 13px; border: 1px solid #475569; border-radius: 19px; background: linear-gradient(145deg, #202B45, #0D1428); box-shadow: 0 30px 90px rgba(0,0,0,.38), 0 0 50px rgba(37,99,235,.16); transform: rotate(-7deg); }
+.device-screen { min-height: 185px; border-radius: 10px; padding: 15px; background: #080D1B; border: 1px solid #27344F; }
+.screen-dots { display: flex; gap: 5px; margin-bottom: 20px; }
+.screen-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #64748B; }
+.code-line { height: 6px; margin: 10px 0; border-radius: 4px; background: #27344F; }
+.code-line.blue { width: 72%; background: #3B82F6; }
+.code-line.purple { width: 52%; background: #8B5CF6; }
+.code-line.short { width: 38%; }
+.code-line.long { width: 90%; }
+.float-chip { position: absolute; display: flex; align-items: center; gap: 8px; padding: 11px 13px; border: 1px solid rgba(148,163,184,.22); border-radius: 13px; background: rgba(15,23,42,.9); color: #E2E8F0; font-size: 12px; font-weight: 700; box-shadow: 0 12px 35px rgba(0,0,0,.22); }
+.float-chip svg { width: 17px; height: 17px; color: #93C5FD; }
+.chip-top { top: 38px; right: 0; }
+.chip-bottom { bottom: 36px; left: 0; }
+.section { padding: calc(78px * var(--site-spacing-scale)) 0; border-top: 1px solid rgba(148,163,184,.13); }
+.section-head { max-width: 650px; margin-bottom: 34px; }
+.kicker { color: #93C5FD; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 12px; }
+h2 { font-size: clamp(30px, 4vw, calc(44px * var(--site-heading-scale))); line-height: 1.1; letter-spacing: -.045em; margin-bottom: 13px; }
+.section-intro { color: #9AA8C1; line-height: 1.75; font-size: 15px; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.panel { border: 1px solid rgba(148,163,184,.18); border-radius: calc(20px * var(--site-radius-scale)); background: linear-gradient(145deg, rgba(24,35,59,.92), rgba(15,23,42,.8)); padding: calc(26px * var(--site-spacing-scale)); }
+.panel p { color: #AAB6CD; line-height: 1.8; font-size: 14px; margin-bottom: 0; }
+.panel-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 20px; border-radius: 13px; color: #BFDBFE; background: rgba(37,99,235,.16); border: 1px solid rgba(96,165,250,.2); }
+.panel-icon svg { width: 21px; height: 21px; }
+.panel h3 { font-size: 17px; letter-spacing: -.02em; margin-bottom: 10px; }
+.education-card { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: start; }
+.school-mark { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 16px; background: linear-gradient(135deg, var(--site-primary), var(--site-secondary)); color: white; font-weight: 900; letter-spacing: -.04em; }
+.education-card h3 { margin: 2px 0 8px; font-size: 18px; }
+.education-card p { color: #9AA8C1; line-height: 1.65; font-size: 14px; margin-bottom: 0; }
+.status { white-space: nowrap; border: 1px solid rgba(96,165,250,.25); border-radius: 999px; padding: 7px 10px; color: #BFDBFE; background: rgba(37,99,235,.1); font-size: 11px; font-weight: 800; }
+.interest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.interest { min-height: 185px; }
+.interest .panel-icon { background: rgba(109,40,217,.16); border-color: rgba(167,139,250,.22); color: #DDD6FE; }
+.project-empty { display: flex; align-items: center; gap: 22px; padding: 26px; border: 1px dashed #475569; border-radius: calc(20px * var(--site-radius-scale)); background: rgba(15,23,42,.42); }
+.project-symbol { flex: 0 0 auto; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 17px; background: rgba(109,40,217,.18); color: #C4B5FD; }
+.project-symbol svg { width: 26px; height: 26px; }
+.project-empty h3 { margin-bottom: 8px; }
+.project-empty p { color: #9AA8C1; font-size: 14px; line-height: 1.7; margin-bottom: 0; }
+.tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.tech-card { padding: 22px; border: 1px solid rgba(148,163,184,.18); border-radius: calc(18px * var(--site-radius-scale)); background: linear-gradient(145deg, rgba(24,35,59,.9), rgba(15,23,42,.72)); }
+.tech-code { display: inline-grid; place-items: center; min-width: 48px; height: 44px; padding: 0 9px; margin-bottom: 17px; border-radius: 12px; background: rgba(37,99,235,.16); border: 1px solid rgba(96,165,250,.2); color: #BFDBFE; font-size: 13px; font-weight: 900; }
+.tech-card h3 { margin-bottom: 7px; font-size: 16px; }
+.tech-card p { color: #9AA8C1; font-size: 13px; line-height: 1.65; margin-bottom: 0; }
+.projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.project-card { display: flex; flex-direction: column; text-align: left; width: 100%; min-height: 275px; padding: 22px; color: #F3F6FF; font: inherit; border: 1px solid rgba(148,163,184,.2); border-radius: calc(20px * var(--site-radius-scale)); background: linear-gradient(150deg, rgba(24,35,59,.96), rgba(15,23,42,.85)); cursor: pointer; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.project-card:hover, .project-card:focus-visible { transform: translateY(-4px); border-color: rgba(96,165,250,.65); box-shadow: 0 18px 40px rgba(0,0,0,.2); outline: none; }
+.project-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 25px; }
+.project-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: rgba(109,40,217,.2); color: #C4B5FD; font-size: 15px; font-weight: 900; }
+.project-state { color: #CBD5E1; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.project-card h3 { font-size: 18px; margin-bottom: 9px; }
+.project-card p { color: #AAB6CD; font-size: 13px; line-height: 1.7; margin-bottom: 22px; }
+.project-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: auto; }
+.project-tags span { padding: 5px 8px; border-radius: 7px; border: 1px solid rgba(148,163,184,.18); color: #CBD5E1; background: rgba(15,23,42,.55); font-size: 10px; }
+.project-link { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 17px; margin-top: 18px; border-top: 1px solid rgba(148,163,184,.13); color: #93C5FD; font-size: 12px; font-weight: 800; }
+.project-modal { position: fixed; inset: 0; z-index: 50; display: none; place-items: center; padding: 20px; background: rgba(3,7,18,.78); backdrop-filter: blur(10px); }
+.project-modal.open { display: grid; }
+.modal-card { width: min(100%, 560px); padding: clamp(24px, 5vw, 38px); border: 1px solid rgba(148,163,184,.25); border-radius: 22px; background: #111A2E; color: #F3F6FF; box-shadow: 0 28px 90px rgba(0,0,0,.45); }
+.modal-close { float: right; width: 38px; height: 38px; border: 1px solid #34415D; border-radius: 11px; background: #17233A; color: white; font-size: 20px; cursor: pointer; }
+.modal-card h2 { margin-top: 20px; font-size: clamp(27px, 4vw, 36px); }
+.modal-card p { color: #AAB6CD; font-size: 14px; line-height: 1.8; }
+.file-label { display: block; margin: 18px 0 24px; padding: 13px 15px; border: 1px solid rgba(96,165,250,.2); border-radius: 10px; background: rgba(37,99,235,.1); color: #BFDBFE; overflow-wrap: anywhere; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.skill-note { display: flex; align-items: flex-start; gap: 12px; color: #9AA8C1; font-size: 13px; line-height: 1.65; margin-top: 17px; }
+.skill-note svg { width: 18px; height: 18px; flex: 0 0 auto; color: #93C5FD; margin-top: 1px; }
+.contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 28px; padding: clamp(26px, 5vw, 48px); border: 1px solid rgba(96,165,250,.23); border-radius: calc(24px * var(--site-radius-scale)); background: radial-gradient(circle at 100% 0%, rgba(109,40,217,.24), transparent 40%), linear-gradient(125deg, rgba(37,99,235,.15), rgba(15,23,42,.8)); }
+.contact-panel h2 { max-width: 570px; margin-bottom: 12px; }
+.contact-panel p { max-width: 580px; color: #AAB6CD; font-size: 14px; line-height: 1.7; margin-bottom: 0; }
+.contact-details { display: grid; gap: 12px; margin-top: 22px; }
+.contact-details a { display: flex; align-items: center; gap: 12px; width: fit-content; color: #DBEAFE; text-decoration: none; font-size: 14px; overflow-wrap: anywhere; }
+.contact-details a:hover { color: #FFFFFF; text-decoration: underline; text-underline-offset: 4px; }
+.contact-icon { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border: 1px solid rgba(96,165,250,.23); border-radius: 11px; background: rgba(37,99,235,.12); color: #93C5FD; font-weight: 800; }
+footer { border-top: 1px solid rgba(148,163,184,.13); padding: 24px 0; color: #7786A2; font-size: 12px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 760px) {
+ .container { width: min(100% - 32px, 600px); }
+ .nav { min-height: 68px; }
+ .menu-toggle { display: inline-flex; }
+ .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 22px 22px; flex-direction: column; align-items: flex-start; gap: 17px; background: #0B1020; border-bottom: 1px solid #25304A; }
+ .nav-links.open { display: flex; }
+ .hero { grid-template-columns: 1fr; gap: 20px; padding: 68px 0 72px; }
+ .hero-art { min-height: 310px; }
+ .orbit { width: 280px; }
+ .device { transform: rotate(-5deg) scale(.88); }
+ .chip-top { right: 1%; top: 20px; }
+ .chip-bottom { left: 0; bottom: 15px; }
+ .about-grid, .interest-grid, .projects-grid { grid-template-columns: 1fr; }
+ .tech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ .education-card { grid-template-columns: auto 1fr; }
+ .education-card .status { grid-column: 2; justify-self: start; }
+ .contact-panel { align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<div class="site-root" id="inicio">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="David Oliveira Cruz, início"><span class="brand-mark">DOC</span><span>David Oliveira Cruz</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu ☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+        <a href="#sobre">Sobre mim</a><a href="#formacao">Formação</a><a href="#tecnologias">Tecnologias</a><a href="#interesses">Interesses</a><a href="#contactos">Contactos</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="container hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Estudante de informática · 12.º ano</div>
+        <h1 id="hero-title">Olá, sou o David.<br><span class="gradient-text">Gosto de tecnologia.</span></h1>
+        <p class="hero-copy">Estudo Gestão e Programação de Sistemas Informáticos na ETPC, em Cantanhede. O meu interesse por computadores e videojogos levou-me a explorar o mundo da informática.</p>
+        <div class="actions"><a class="btn btn-primary" href="#sobre">Conhece-me melhor <span aria-hidden="true">↘</span></a><a class="btn btn-secondary" href="#formacao">Ver a minha formação</a></div>
+        <div class="hero-meta"><span>⌁ Cantanhede, Portugal</span><span>▣ Curso TGPSI</span></div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração decorativa de um ecrã com código">
+        <div class="orbit"><div class="device"><div class="device-screen"><div class="screen-dots"><i></i><i></i><i></i></div><div class="code-line blue"></div><div class="code-line long"></div><div class="code-line purple"></div><div class="code-line short"></div><div class="code-line blue"></div><div class="code-line long"></div><div class="code-line purple"></div></div></div>
+          <div class="float-chip chip-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Computadores</div>
+          <div class="float-chip chip-bottom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10h12a4 4 0 0 1 3.8 5.3l-1 3A2.5 2.5 0 0 1 17 20l-3-3h-4l-3 3a2.5 2.5 0 0 1-3.8-1.7l-1-3A4 4 0 0 1 6 10Z"/><path d="M7 13v4m-2-2h4m7-1h.01M18 16h.01"/></svg> Videojogos</div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="section-head"><div class="kicker">01 / Sobre mim</div><h2>Um pouco sobre quem sou.</h2><p class="section-intro">Uma apresentação simples, autêntica e em evolução — tal como o meu percurso na informática.</p></div>
+        <div class="about-grid">
+          <article class="panel"><div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div><h3>Quem sou</h3><p>Sou o David Oliveira Cruz e frequento o 12.º ano do curso Técnico de Gestão e Programação de Sistemas Informáticos. Este site é o meu espaço para apresentar a minha formação, os meus interesses e os projetos que venha a desenvolver.</p></article>
+          <article class="panel"><div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="5"/></svg></div><h3>O que me trouxe até aqui</h3><p>Escolhi este curso porque gosto de jogos e computadores. Quero continuar a descobrir mais sobre a área informática e aproveitar o curso para aprender, experimentar e desenvolver novas competências.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="formacao">
+      <div class="container">
+        <div class="section-head"><div class="kicker">02 / Formação</div><h2>O meu percurso académico.</h2><p class="section-intro">A formação que estou a frequentar e a base do meu percurso na área tecnológica.</p></div>
+        <article class="panel education-card"><div class="school-mark">ETPC</div><div><h3>Curso Técnico de Gestão e Programação de Sistemas Informáticos (TGPSI)</h3><p>ETPC · Cantanhede, Portugal<br>12.º ano · A frequentar</p></div><span class="status">Em curso</span></article>
+      </div>
+    </section>
+    <section class="section" id="tecnologias">
+      <div class="container">
+        <div class="section-head"><div class="kicker">03 / Competências técnicas</div><h2>Tecnologias que já aprendi.</h2><p class="section-intro">Linguagens e tecnologias que já trabalhei durante o meu percurso no curso TGPSI.</p></div>
+        <div class="tech-grid">
+          <article class="tech-card"><span class="tech-code">HTML</span><h3>HTML</h3><p>Estruturar o conteúdo e os elementos de páginas web.</p></article>
+          <article class="tech-card"><span class="tech-code">CSS</span><h3>CSS</h3><p>Trabalhar o estilo, o layout e o aspeto visual de páginas web.</p></article>
+          <article class="tech-card"><span class="tech-code">JS</span><h3>JavaScript</h3><p>Adicionar lógica e interatividade a páginas e experiências web.</p></article>
+          <article class="tech-card"><span class="tech-code">C</span><h3>Linguagem C</h3><p>Aprender fundamentos de programação através da linguagem C.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="interesses">
+      <div class="container">
+        <div class="section-head"><div class="kicker">04 / Interesses</div><h2>O que me entusiasma.</h2><p class="section-intro">Os interesses que despertaram a minha curiosidade pela tecnologia.</p></div>
+        <div class="interest-grid">
+          <article class="panel interest"><div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Computadores</h3><p>Interesse pelo universo dos computadores e pela forma como a tecnologia funciona.</p></article>
+          <article class="panel interest"><div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10h12a4 4 0 0 1 3.8 5.3l-1 3A2.5 2.5 0 0 1 17 20l-3-3h-4l-3 3a2.5 2.5 0 0 1-3.8-1.7l-1-3A4 4 0 0 1 6 10Z"/><path d="M7 13v4m-2-2h4m7-1h.01M18 16h.01"/></svg></div><h3>Videojogos</h3><p>Os jogos foram uma das razões que me levaram a interessar-me pela informática.</p></article>
+          <article class="panel interest"><div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 8-5 4 5 4m8-8 5 4-5 4m-3-9-2 10"/></svg></div><h3>Informática</h3><p>Quero explorar melhor a área dos sistemas informáticos e continuar a aprender ao longo do curso.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="contactos">
+      <div class="container"><div class="contact-panel"><div><div class="kicker">06 / Contactos</div><h2>Vamos manter o contacto.</h2><p>Podes entrar em contacto comigo através do email ou do telefone.</p><div class="contact-details"><a href="mailto:Davidcruz.164144@etpc.pt"><span class="contact-icon" aria-hidden="true">@</span><span>Davidcruz.164144@etpc.pt</span></a><a href="tel:+351910945919"><span class="contact-icon" aria-hidden="true">☎</span><span>910 945 919</span></a></div></div><a class="btn btn-primary" href="#inicio">Voltar ao início ↑</a></div></div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> David Oliveira Cruz</span><span>Portefólio pessoal · Estudante de TGPSI</span></div></footer>
+</div>
+<script>
+const toggle = document.getElementById('menuToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  const isOpen = links.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(isOpen));
+  toggle.textContent = isOpen ? 'Fechar ✕' : 'Menu ☰';
+});
+links.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  links.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.textContent = 'Menu ☰';
+}));
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
